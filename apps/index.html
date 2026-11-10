@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukázka pozicování boxů</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Flex rozmisťuje pouze oba wrappery vedle sebe. */
+    .demo_layout {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .relative_wrapper,
+    .absolute_wrapper {
+      position: relative;
+      flex: 1 1 50%;
+      min-width: 0;
+      min-height: 140vh;
+      padding: 24px;
+      border: 6px solid;
+      overflow: visible;
+    }
+
+    .relative_wrapper {
+      background: #e8f3ff;
+      border-color: #2672b8;
+    }
+
+    .absolute_wrapper {
+      background: #f4eaff;
+      border-color: #8247b5;
+    }
+
+    .box_relative,
+    .box_absolute,
+    .box_sticky,
+    .box_static {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 4px solid;
+      border-radius: 12px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Posunuto, ale stále zabírá své původní místo v toku stránky. */
+    .box_relative {
+      position: relative;
+      top: 24px;
+      left: 32px;
+      width: min(72%, 310px);
+      height: 90px;
+      margin-bottom: 42px;
+      color: #6d3100;
+      background: #ffd6a8;
+      border-color: #e87917;
+    }
+
+    /* Při scrollování se přichytí k horní části obrazovky. */
+    .box_sticky {
+      position: sticky;
+      top: -18px;
+      left: 20%;
+      width: min(66%, 270px);
+      height: 78px;
+      margin-bottom: 34px;
+      color: #15552d;
+      background: #c9f2d4;
+      border-color: #32834c;
+    }
+
+    /* Zůstává na svém místě v běžném toku stránky. */
+    .box_static {
+      width: min(58%, 230px);
+      height: 72px;
+      display: block;
+      margin: 0 -12px 0 auto;
+      color: #173c70;
+      background: #cfe3ff;
+      border-color: #3978c5;
+    }
+
+    /* Umístěn vůči svému wrapperu, mimo běžný tok stránky. */
+    .box_absolute {
+      position: absolute;
+      bottom: -2%;
+      left: -5%;
+      width: min(58%, 240px);
+      height: 84px;
+      color: #721d3b;
+      background: #ffd0df;
+      border-color: #c13f6c;
+    }
+
+    @media (max-width: 700px) {
+      .demo_layout {
+        flex-direction: column;
+      }
+
+      .relative_wrapper,
+      .absolute_wrapper {
+        flex: none;
+        width: 100%;
+        min-height: 115vh;
+        padding: 20px;
+      }
+
+      .box_absolute {
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="demo_layout">
+    <div class="relative_wrapper">
+      <strong>Relative wrapper</strong>
+      <div class="box_relative">relative box</div>
+      <div class="box_absolute">absolute box</div>
+      <div class="box_sticky">sticky box</div>
+      <div class="box_static">static box</div>
+    </div>
+
+    <div class="absolute_wrapper">
+      <strong>Absolute wrapper</strong>
+      <div class="box_relative">relative box</div>
+      <div class="box_absolute">absolute box</div>
+      <div class="box_sticky">sticky box</div>
+      <div class="box_static">static box</div>
+    </div>
+  </main>
+</body>
+</html>

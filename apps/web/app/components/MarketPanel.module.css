@@ -1,0 +1,75 @@
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+@media (max-width: 900px) {
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metric,
+.chartCard {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.metric p {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.metric strong {
+  font-size: 1.15rem;
+}
+
+.chartCard h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.updated {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.chartControls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.chartControls button {
+  padding: 6px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.chartControls button:hover {
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.chartControls button[aria-pressed="true"] {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
